@@ -1,19 +1,16 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 import { useState, useEffect } from "react";
-import ProjectFilter from "./ProjectFilter";
-import { ProjectCardSkeleton } from "./LoadingSkeletons";
+import ProjectFilter from "@/components/ProjectFilter";
+import { ProjectCardSkeleton } from "@/components/LoadingSkeletons";
 import { fullProjects, categories } from "@/constant";
 import { CldImage } from "next-cloudinary";
-import Link from "next/link";
-import ViewAll from "./ViewAll";
 
 export default function Projects() {
-  const projects = fullProjects.slice(0, 6); // Limit to 6 projects for initial load
   const [activeCategory, setActiveCategory] = useState("All");
-  const [filteredProjects, setFilteredProjects] = useState(projects);
+  const [filteredProjects, setFilteredProjects] = useState(fullProjects);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -28,10 +25,10 @@ export default function Projects() {
 
   useEffect(() => {
     if (activeCategory === "All") {
-      setFilteredProjects(projects);
+      setFilteredProjects(fullProjects);
     } else {
       setFilteredProjects(
-        projects.filter((project) => project.category === activeCategory)
+        fullProjects.filter((project) => project.category === activeCategory)
       );
     }
   }, [activeCategory]);
@@ -150,7 +147,6 @@ export default function Projects() {
                 </motion.div>
               ))}
             </motion.div>
-            <ViewAll text="View All Projects" link="/projects" />
           </AnimatePresence>
         )}
 

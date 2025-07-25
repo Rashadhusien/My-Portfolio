@@ -3,7 +3,7 @@
 import type React from "react";
 
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Loader } from "lucide-react";
 import { useState } from "react";
 
 export default function Contact() {
@@ -14,6 +14,7 @@ export default function Contact() {
   });
 
   const [success, setSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [validationError, setValidationError] = useState({
     name: "",
@@ -21,18 +22,39 @@ export default function Contact() {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Validate form data
     if (!handleValidation()) {
       return;
     }
-    // Proceed with submission
-    console.log("Form submitted:", formData);
-    setSuccess(true);
-    setFormData({ name: "", email: "", message: "" });
-    setTimeout(() => setSuccess(false), 3000);
+    setIsLoading(true);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (!data.success) {
+        throw new Error(data.error || "Failed to send message");
+      }
+      setSuccess(true);
+      setFormData({ name: "", email: "", message: "" });
+      setTimeout(() => setSuccess(false), 3000);
+    } catch (error) {
+      console.error("Error sending message:", error);
+
+      setSuccess(false);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleValidation = () => {
@@ -276,11 +298,12 @@ export default function Contact() {
 
                 <motion.button
                   type="submit"
+                  disabled={isLoading}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2"
+                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white disabled:cursor-no-drop disabled:text-blue-300 font-semibold py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2"
                 >
-                  <Send size={18} />
+                  {isLoading ? <Loader /> : <Send size={18} />}
                   <span>Send Message</span>
                 </motion.button>
               </div>

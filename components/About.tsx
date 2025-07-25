@@ -48,9 +48,9 @@ export default function About() {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            <div className="relative z-10">
+            <div className="relative z-10 ">
               <Image
-                src="/portfolio-image.jpg"
+                src="/profile.jpg"
                 alt="Alex Johnson"
                 width={400}
                 height={400}
@@ -86,51 +86,50 @@ export default function About() {
                 the developer community.
               </p>
             </div>
-
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Skills & Technologies
-              </h3>
-              {isLoading ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
-                    <SkillSkeleton key={i} />
-                  ))}
-                </div>
-              ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {skills.map((skill, index) => (
-                    <motion.div
-                      key={skill.name}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                      className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm"
-                    >
-                      <div className="flex justify-between items-center mb-2">
-                        <span className="text-gray-900 dark:text-white font-medium">
-                          {skill.name}
-                        </span>
-                        <span className="text-blue-600 dark:text-blue-400 text-sm">
-                          {skill.level}%
-                        </span>
-                      </div>
-                      <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          whileInView={{ width: `${skill.level}%` }}
-                          transition={{ duration: 1, delay: index * 0.1 }}
-                          viewport={{ once: true }}
-                          className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 h-2 rounded-full"
-                        />
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              )}
-            </div>
           </motion.div>
+        </div>
+        <div className="space-y-4 mt-10">
+          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            Skills & Technologies
+          </h3>
+          {isLoading ? (
+            <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((i) => (
+                <SkillSkeleton key={i} />
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+              {skills.map((skill, index) => (
+                <motion.div
+                  key={skill.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm"
+                >
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-gray-900 dark:text-white font-medium">
+                      {skill.name}
+                    </span>
+                    <span className="text-blue-600 dark:text-blue-400 text-sm">
+                      {skill.level}%
+                    </span>
+                  </div>
+                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${skill.level}%` }}
+                      transition={{ duration: 1, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                      className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 h-2 rounded-full"
+                    />
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>

@@ -11,6 +11,8 @@ import { navItems, sections } from "@/constant";
 export default function Navigation() {
   const [activeSection, setActiveSection] = useState("home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [show, setShow] = useState(true);
+
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
@@ -36,11 +38,27 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    // add change in scroll position to change style navbar on show/hide
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+
+      if (scrollY > 100) {
+        setShow(false);
+      } else {
+        setShow(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="fixed top-0  left-0 right-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 transition-colors duration-300"
+      className={` ${show ? "w-full rounded-none top-0 translate-y-0 " : "max-w-[90%] mx-auto  top-2 rounded-lg  translate-y-3   "}  fixed transition-all left-0 right-0 z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800  duration-300`}
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
@@ -54,35 +72,25 @@ export default function Navigation() {
           </motion.div>
 
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) =>
-              item.href.startsWith("#") ? (
-                <a
-                  key={item.id}
-                  href={item.href}
-                  className={`relative transition-colors duration-300 hover:text-blue-600 dark:hover:text-blue-400 ${
-                    activeSection === item.id
-                      ? "text-blue-600 dark:text-blue-400"
-                      : "text-gray-700 dark:text-gray-300"
-                  }`}
-                >
-                  {item.label}
-                  {activeSection === item.id && (
-                    <motion.div
-                      layoutId="activeSection"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-600 dark:bg-blue-400"
-                    />
-                  )}
-                </a>
-              ) : (
-                <Link
-                  key={item.id}
-                  href={item.href}
-                  className="relative transition-colors duration-300 hover:text-blue-600 dark:hover:text-blue-400 text-gray-700 dark:text-gray-300"
-                >
-                  {item.label}
-                </Link>
-              )
-            )}
+            {navItems.map((item) => (
+              <Link
+                key={item.id}
+                href={item.href}
+                className={`relative transition-colors duration-300 hover:text-blue-600 dark:hover:text-blue-400 ${
+                  activeSection === item.id
+                    ? "text-blue-600 dark:text-blue-400"
+                    : "text-gray-700 dark:text-gray-300"
+                }`}
+              >
+                {item.label}
+                {activeSection === item.id && (
+                  <motion.div
+                    layoutId="activeSection"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-blue-600 dark:bg-blue-400"
+                  />
+                )}
+              </Link>
+            ))}
 
             <button
               onClick={toggleTheme}
@@ -117,14 +125,14 @@ export default function Navigation() {
             className="md:hidden mt-4 py-4 border-t border-gray-200 dark:border-gray-800"
           >
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.id}
                 href={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="block py-2 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </motion.div>
         )}

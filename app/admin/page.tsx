@@ -1,75 +1,86 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
-import { FileText, MessageSquare, Eye, TrendingUp, Settings, LogOut, Plus, Edit, Trash2, Search } from "lucide-react"
-import { useTheme } from "@/components/ThemeProvider"
-import { PageLoadingSkeleton } from "@/components/LoadingSkeletons"
-import BlogEditor from "@/components/BlogEditor"
-import ProjectEditor from "@/components/ProjectEditor"
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import {
+  FileText,
+  MessageSquare,
+  Eye,
+  TrendingUp,
+  Settings,
+  LogOut,
+  Plus,
+  Edit,
+  Trash2,
+  Search,
+} from "lucide-react";
+import { useTheme } from "@/components/ThemeProvider";
+import { PageLoadingSkeleton } from "@/components/LoadingSkeletons";
+import BlogEditor from "@/components/BlogEditor";
+import ProjectEditor from "@/components/ProjectEditor";
 
 interface DashboardStats {
-  totalViews: number
-  totalProjects: number
-  totalTestimonials: number
-  totalBlogPosts: number
+  totalViews: number;
+  totalProjects: number;
+  totalTestimonials: number;
+  totalBlogPosts: number;
 }
 
 interface Project {
-  id: number
-  title: string
-  category: string
-  status: "Published" | "Draft"
-  views: number
-  createdAt: string
+  id: number;
+  title: string;
+  category: string;
+  status: "Published" | "Draft";
+  views: number;
+  createdAt: string;
 }
 
 interface BlogPost {
-  id: number
-  title: string
-  excerpt: string
-  content?: string
-  category: string
-  status: "Published" | "Draft"
-  views: number
-  publishedAt: string
-  image?: string
-  slug?: string
-  readTime?: string
+  id: number;
+  title: string;
+  excerpt: string;
+  content?: string;
+  category: string;
+  status: "Published" | "Draft";
+  views: number;
+  publishedAt: string;
+  image?: string;
+  slug?: string;
+  readTime?: string;
 }
 
 interface Testimonial {
-  id: number
-  name: string
-  company: string
-  rating: number
-  status: "Published" | "Pending"
-  createdAt: string
+  id: number;
+  name: string;
+  company: string;
+  rating: number;
+  status: "Published" | "Pending";
+  createdAt: string;
 }
 
 export default function AdminDashboard() {
-  const [isLoading, setIsLoading] = useState(true)
-  const [activeTab, setActiveTab] = useState("overview")
-  const [searchTerm, setSearchTerm] = useState("")
-  const { theme, toggleTheme } = useTheme()
+  const [isLoading, setIsLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState("overview");
+  const [searchTerm, setSearchTerm] = useState("");
+  const { theme, toggleTheme } = useTheme();
 
   const [stats, setStats] = useState<DashboardStats>({
     totalViews: 0,
     totalProjects: 0,
     totalTestimonials: 0,
     totalBlogPosts: 0,
-  })
+  });
 
-  const [projects, setProjects] = useState<Project[]>([])
-  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([])
-  const [testimonials, setTestimonials] = useState<Testimonial[]>([])
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([]);
+  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
 
-  const [showBlogEditor, setShowBlogEditor] = useState(false)
-  const [showProjectEditor, setShowProjectEditor] = useState(false)
-  const [editingBlog, setEditingBlog] = useState<BlogPost | undefined>()
-  const [editingProject, setEditingProject] = useState<Project | undefined>()
+  const [showBlogEditor, setShowBlogEditor] = useState(false);
+  const [showProjectEditor, setShowProjectEditor] = useState(false);
+  const [editingBlog, setEditingBlog] = useState<BlogPost | undefined>();
+  const [editingProject, setEditingProject] = useState<Project | undefined>();
 
   useEffect(() => {
     // Simulate loading data
@@ -79,7 +90,7 @@ export default function AdminDashboard() {
         totalProjects: 6,
         totalTestimonials: 4,
         totalBlogPosts: 4,
-      })
+      });
 
       setProjects([
         {
@@ -106,7 +117,7 @@ export default function AdminDashboard() {
           views: 0,
           createdAt: "2024-01-08",
         },
-      ])
+      ]);
 
       setBlogPosts([
         {
@@ -136,10 +147,17 @@ export default function AdminDashboard() {
           publishedAt: "2024-01-01",
           excerpt: "Optimize your React app for better performance.",
         },
-      ])
+      ]);
 
       setTestimonials([
-        { id: 1, name: "Sarah Chen", company: "TechCorp", rating: 5, status: "Published", createdAt: "2024-01-12" },
+        {
+          id: 1,
+          name: "Sarah Chen",
+          company: "TechCorp",
+          rating: 5,
+          status: "Published",
+          createdAt: "2024-01-12",
+        },
         {
           id: 2,
           name: "Michael Rodriguez",
@@ -156,46 +174,48 @@ export default function AdminDashboard() {
           status: "Pending",
           createdAt: "2024-01-08",
         },
-      ])
+      ]);
 
-      setIsLoading(false)
-    }, 2000)
+      setIsLoading(false);
+    }, 2000);
 
-    return () => clearTimeout(timer)
-  }, [])
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleEditBlog = (blog: BlogPost) => {
-    setEditingBlog(blog)
-    setShowBlogEditor(true)
-  }
+    setEditingBlog(blog);
+    setShowBlogEditor(true);
+  };
 
   const handleEditProject = (project: Project) => {
-    setEditingProject(project)
-    setShowProjectEditor(true)
-  }
+    setEditingProject(project);
+    setShowProjectEditor(true);
+  };
 
   const handleSaveBlog = (blog: BlogPost) => {
     if (blog.id) {
-      setBlogPosts((prev) => prev.map((p) => (p.id === blog.id ? blog : p)))
+      setBlogPosts((prev) => prev.map((p) => (p.id === blog.id ? blog : p)));
     } else {
-      setBlogPosts((prev) => [...prev, { ...blog, id: Date.now() }])
+      setBlogPosts((prev) => [...prev, { ...blog, id: Date.now() }]);
     }
-    setShowBlogEditor(false)
-    setEditingBlog(undefined)
-  }
+    setShowBlogEditor(false);
+    setEditingBlog(undefined);
+  };
 
   const handleSaveProject = (project: Project) => {
     if (project.id) {
-      setProjects((prev) => prev.map((p) => (p.id === project.id ? project : p)))
+      setProjects((prev) =>
+        prev.map((p) => (p.id === project.id ? project : p))
+      );
     } else {
-      setProjects((prev) => [...prev, { ...project, id: Date.now() }])
+      setProjects((prev) => [...prev, { ...project, id: Date.now() }]);
     }
-    setShowProjectEditor(false)
-    setEditingProject(undefined)
-  }
+    setShowProjectEditor(false);
+    setEditingProject(undefined);
+  };
 
   if (isLoading) {
-    return <PageLoadingSkeleton />
+    return <PageLoadingSkeleton />;
   }
 
   const StatCard = ({
@@ -203,7 +223,12 @@ export default function AdminDashboard() {
     value,
     icon: Icon,
     color,
-  }: { title: string; value: number; icon: any; color: string }) => (
+  }: {
+    title: string;
+    value: number;
+    icon: any;
+    color: string;
+  }) => (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -211,26 +236,32 @@ export default function AdminDashboard() {
     >
       <div className="flex items-center justify-between">
         <div>
-          <p className="text-gray-600 dark:text-gray-400 text-sm font-medium">{title}</p>
-          <p className="text-2xl font-bold text-gray-900 dark:text-white">{value.toLocaleString()}</p>
+          <p className="text-gray-600 dark:text-gray-400 text-sm font-medium">
+            {title}
+          </p>
+          <p className="text-2xl font-bold text-gray-900 dark:text-white">
+            {value.toLocaleString()}
+          </p>
         </div>
         <Icon className="text-gray-400" size={24} />
       </div>
     </motion.div>
-  )
+  );
 
   const TableRow = ({ children }: { children: React.ReactNode }) => (
     <tr className="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
       {children}
     </tr>
-  )
+  );
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       {/* Sidebar */}
       <div className="fixed left-0 top-0 h-full w-64 bg-white dark:bg-gray-800 shadow-lg z-50">
         <div className="p-6">
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Admin Panel</h1>
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+            Admin Panel
+          </h1>
         </div>
 
         <nav className="mt-6">
@@ -276,12 +307,19 @@ export default function AdminDashboard() {
         {/* Header */}
         <div className="flex justify-between items-center mb-8">
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white capitalize">{activeTab}</h2>
-            <p className="text-gray-600 dark:text-gray-400">Manage your portfolio content</p>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white capitalize">
+              {activeTab}
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400">
+              Manage your portfolio content
+            </p>
           </div>
           <div className="flex items-center space-x-4">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+              <Search
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                size={20}
+              />
               <input
                 type="text"
                 placeholder="Search..."
@@ -293,11 +331,11 @@ export default function AdminDashboard() {
             <button
               onClick={() => {
                 if (activeTab === "blog") {
-                  setEditingBlog(undefined)
-                  setShowBlogEditor(true)
+                  setEditingBlog(undefined);
+                  setShowBlogEditor(true);
                 } else if (activeTab === "projects") {
-                  setEditingProject(undefined)
-                  setShowProjectEditor(true)
+                  setEditingProject(undefined);
+                  setShowProjectEditor(true);
                 }
               }}
               className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center space-x-2 transition-colors"
@@ -313,15 +351,30 @@ export default function AdminDashboard() {
           <div className="space-y-8">
             {/* Stats Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <StatCard title="Total Views" value={stats.totalViews} icon={Eye} color="border-blue-500" />
-              <StatCard title="Projects" value={stats.totalProjects} icon={FileText} color="border-green-500" />
+              <StatCard
+                title="Total Views"
+                value={stats.totalViews}
+                icon={Eye}
+                color="border-blue-500"
+              />
+              <StatCard
+                title="Projects"
+                value={stats.totalProjects}
+                icon={FileText}
+                color="border-green-500"
+              />
               <StatCard
                 title="Testimonials"
                 value={stats.totalTestimonials}
                 icon={MessageSquare}
                 color="border-purple-500"
               />
-              <StatCard title="Blog Posts" value={stats.totalBlogPosts} icon={FileText} color="border-orange-500" />
+              <StatCard
+                title="Blog Posts"
+                value={stats.totalBlogPosts}
+                icon={FileText}
+                color="border-orange-500"
+              />
             </div>
 
             {/* Recent Activity */}
@@ -330,14 +383,31 @@ export default function AdminDashboard() {
               animate={{ opacity: 1, y: 0 }}
               className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg"
             >
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Recent Activity</h3>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
+                Recent Activity
+              </h3>
               <div className="space-y-4">
                 {[
-                  { action: "New testimonial received", time: "2 hours ago", type: "testimonial" },
-                  { action: "Blog post published", time: "1 day ago", type: "blog" },
-                  { action: "Project updated", time: "3 days ago", type: "project" },
+                  {
+                    action: "New testimonial received",
+                    time: "2 hours ago",
+                    type: "testimonial",
+                  },
+                  {
+                    action: "Blog post published",
+                    time: "1 day ago",
+                    type: "blog",
+                  },
+                  {
+                    action: "Project updated",
+                    time: "3 days ago",
+                    type: "project",
+                  },
                 ].map((activity, index) => (
-                  <div key={index} className="flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                  <div
+                    key={index}
+                    className="flex items-center space-x-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-lg"
+                  >
                     <div
                       className={`w-2 h-2 rounded-full ${
                         activity.type === "testimonial"
@@ -348,8 +418,12 @@ export default function AdminDashboard() {
                       }`}
                     />
                     <div className="flex-1">
-                      <p className="text-gray-900 dark:text-white">{activity.action}</p>
-                      <p className="text-sm text-gray-500 dark:text-gray-400">{activity.time}</p>
+                      <p className="text-gray-900 dark:text-white">
+                        {activity.action}
+                      </p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                        {activity.time}
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -408,7 +482,9 @@ export default function AdminDashboard() {
                           {project.status}
                         </span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">{project.views}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
+                        {project.views}
+                      </td>
                       <td className="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
                         {new Date(project.createdAt).toLocaleDateString()}
                       </td>
@@ -469,7 +545,9 @@ export default function AdminDashboard() {
                       <td className="px-6 py-4 whitespace-nowrap text-gray-900 dark:text-white font-medium">
                         {post.title}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">{post.category}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
+                        {post.category}
+                      </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <span
                           className={`px-2 py-1 text-xs font-medium rounded-full ${
@@ -481,7 +559,9 @@ export default function AdminDashboard() {
                           {post.status}
                         </span>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">{post.views}</td>
+                      <td className="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
+                        {post.views}
+                      </td>
                       <td className="px-6 py-4 whitespace-nowrap text-gray-600 dark:text-gray-400">
                         {new Date(post.publishedAt).toLocaleDateString()}
                       </td>
@@ -586,10 +666,14 @@ export default function AdminDashboard() {
             animate={{ opacity: 1, y: 0 }}
             className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg"
           >
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">Settings</h3>
+            <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-6">
+              Settings
+            </h3>
             <div className="space-y-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Site Title</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Site Title
+                </label>
                 <input
                   type="text"
                   defaultValue="Alex Johnson - Portfolio"
@@ -597,7 +681,9 @@ export default function AdminDashboard() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Email
+                </label>
                 <input
                   type="email"
                   defaultValue="alex@example.com"
@@ -605,7 +691,9 @@ export default function AdminDashboard() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Bio</label>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Bio
+                </label>
                 <textarea
                   rows={4}
                   defaultValue="Passionate front-end developer with 5+ years of experience..."
@@ -624,8 +712,8 @@ export default function AdminDashboard() {
             post={editingBlog}
             onSave={handleSaveBlog}
             onCancel={() => {
-              setShowBlogEditor(false)
-              setEditingBlog(undefined)
+              setShowBlogEditor(false);
+              setEditingBlog(undefined);
             }}
           />
         )}
@@ -635,12 +723,12 @@ export default function AdminDashboard() {
             project={editingProject}
             onSave={handleSaveProject}
             onCancel={() => {
-              setShowProjectEditor(false)
-              setEditingProject(undefined)
+              setShowProjectEditor(false);
+              setEditingProject(undefined);
             }}
           />
         )}
       </div>
     </div>
-  )
+  );
 }
