@@ -12,8 +12,6 @@ import ViewAll from "./ViewAll";
 
 export default function Projects() {
   const projects = fullProjects.slice(0, 6); // Limit to 6 projects for initial load
-  const [activeCategory, setActiveCategory] = useState("All");
-  const [filteredProjects, setFilteredProjects] = useState(projects);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -25,20 +23,6 @@ export default function Projects() {
 
     return () => clearTimeout(timer);
   }, []);
-
-  useEffect(() => {
-    if (activeCategory === "All") {
-      setFilteredProjects(projects);
-    } else {
-      setFilteredProjects(
-        projects.filter((project) => project.category === activeCategory)
-      );
-    }
-  }, [activeCategory]);
-
-  const handleCategoryChange = (category: string) => {
-    setActiveCategory(category);
-  };
 
   return (
     <section
@@ -65,12 +49,6 @@ export default function Projects() {
           </p>
         </motion.div>
 
-        <ProjectFilter
-          categories={categories}
-          activeCategory={activeCategory}
-          onCategoryChange={handleCategoryChange}
-        />
-
         {isLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[1, 2, 3, 4].map((i) => (
@@ -80,14 +58,13 @@ export default function Projects() {
         ) : (
           <AnimatePresence mode="wait">
             <motion.div
-              key={activeCategory}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
               className="grid grid-cols-1 md:grid-cols-2 gap-8"
             >
-              {filteredProjects.map((project, index) => (
+              {projects.map((project, index) => (
                 <motion.div
                   key={project.id}
                   initial={{ opacity: 0, y: 30 }}
@@ -154,14 +131,14 @@ export default function Projects() {
           </AnimatePresence>
         )}
 
-        {filteredProjects.length === 0 && !isLoading && (
+        {projects.length === 0 && !isLoading && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="text-center py-12"
           >
             <p className="text-gray-600 dark:text-gray-400 text-lg">
-              No projects found in the "{activeCategory}" category.
+              No projects found.
             </p>
           </motion.div>
         )}

@@ -109,22 +109,13 @@ export default function About() {
                   viewport={{ once: true }}
                   className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-sm"
                 >
-                  <div className="flex justify-between items-center mb-2">
+                  <div className="flex gap-4 items-center mb-2">
+                    <span className="text-blue-600 dark:text-blue-400 text-sm w-[40px] h-[40px]">
+                      {skill.icon}
+                    </span>
                     <span className="text-gray-900 dark:text-white font-medium">
                       {skill.name}
                     </span>
-                    <span className="text-blue-600 dark:text-blue-400 text-sm">
-                      {skill.level}%
-                    </span>
-                  </div>
-                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${skill.level}%` }}
-                      transition={{ duration: 1, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                      className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-500 dark:to-purple-500 h-2 rounded-full"
-                    />
                   </div>
                 </motion.div>
               ))}

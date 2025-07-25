@@ -1,12 +1,13 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github } from "lucide-react";
 import { useState, useEffect } from "react";
 import ProjectFilter from "@/components/ProjectFilter";
 import { ProjectCardSkeleton } from "@/components/LoadingSkeletons";
 import { fullProjects, categories } from "@/constant";
 import { CldImage } from "next-cloudinary";
+import Link from "next/link";
 
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -43,6 +44,13 @@ export default function Projects() {
       className="py-20 bg-gray-100 dark:bg-gray-800/50 transition-colors duration-300"
     >
       <div className="container mx-auto px-6">
+        <Link
+          href="/"
+          className=" bg-transparent border-blue-600 border-2 hover:bg-blue-700 text-gray-800 dark:text-white px-6 py-3 rounded-lg transition-colors"
+        >
+          <ArrowLeft size={20} className="inline-block mr-2" />
+          Back
+        </Link>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

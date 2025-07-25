@@ -1,22 +1,65 @@
 import { v4 as uuid } from "uuid";
 
+import { FaHtml5 } from "react-icons/fa";
+import {
+  SiCss3,
+  SiJavascript,
+  SiTypescript,
+  SiReact,
+  SiNextdotjs,
+  SiRedux,
+  SiTailwindcss,
+  SiBootstrap,
+  SiMui,
+  SiGreensock,
+  SiSass,
+  SiJest,
+  SiNodedotjs,
+  SiGit,
+  SiFigma,
+} from "react-icons/si";
+
 export const skills = [
-  { name: "HTML5", level: 95 },
-  { name: "CSS3", level: 90 },
-  { name: "JavaScript", level: 92 },
-  { name: "TypeScript", level: 88 },
-  { name: "React", level: 94 },
-  { name: "Next.js", level: 90 },
-  { name: "Redux", level: 30 },
-  { name: "Tailwind CSS", level: 92 },
-  { name: "Bootstrap", level: 70 },
-  { name: "MUI", level: 50 },
-  { name: "GSAP", level: 50 },
-  { name: "SaSS", level: 65 },
-  { name: "Jest", level: 40 },
-  { name: "Node.js", level: 50 },
-  { name: "Git", level: 65 },
-  { name: "Figma", level: 80 },
+  { name: "HTML5", level: 95, icon: <FaHtml5 className="w-full h-full" /> },
+  { name: "CSS3", level: 90, icon: <SiCss3 className="w-full h-full" /> },
+  {
+    name: "JavaScript",
+    level: 92,
+    icon: <SiJavascript className="w-full h-full" />,
+  },
+  {
+    name: "TypeScript",
+    level: 88,
+    icon: <SiTypescript className="w-full h-full" />,
+  },
+  { name: "React", level: 94, icon: <SiReact className="w-full h-full" /> },
+  {
+    name: "Next.js",
+    level: 90,
+    icon: <SiNextdotjs className="w-full h-full" />,
+  },
+  { name: "Redux", level: 30, icon: <SiRedux className="w-full h-full" /> },
+  {
+    name: "Tailwind CSS",
+    level: 92,
+    icon: <SiTailwindcss className="w-full h-full" />,
+  },
+  {
+    name: "Bootstrap",
+    level: 70,
+    icon: <SiBootstrap className="w-full h-full" />,
+  },
+  { name: "MUI", level: 50, icon: <SiMui className="w-full h-full" /> },
+  { name: "GSAP", level: 50, icon: <SiGreensock className="w-full h-full" /> },
+  { name: "SaSS", level: 65, icon: <SiSass className="w-full h-full" /> },
+  { name: "Jest", level: 40, icon: <SiJest className="w-full h-full" /> },
+  {
+    name: "Node.js",
+    level: 50,
+    icon: <SiNodedotjs className="w-full h-full" />,
+  },
+  { name: "Git", level: 65, icon: <SiGit className="w-full h-full" /> },
+  { name: "Figma", level: 80, icon: <SiFigma className="w-full h-full" /> },
 ];
 
 export const navItems = [
@@ -37,7 +80,15 @@ export const sections = [
   "contact",
 ];
 
-export const categories = ["All", "Web Development", "Next Js", "React Js"];
+export const categories = [
+  "All",
+  "HTML & CSS",
+  "JavaScript",
+  "React Js",
+  "Next Js",
+  "Tailwind CSS",
+  "TypeScript",
+];
 
 interface Projects {
   id: string;
@@ -50,6 +101,89 @@ interface Projects {
   githubUrl: string;
 }
 export const fullProjects: Projects[] = [
+  {
+    id: uuid(),
+    title: "movie App",
+    description:
+      "A responsive movie browsing web application that allows users to explore and discover movies by popularity, rating, or search. Built using modern front-end technologies, it fetches real-time data from The Movie Database (TMDb) API, providing an engaging and dynamic user experience.",
+    image: "movie-app",
+    technologies: ["React Js", "API", "Tailwind CSS", "appwrite"],
+    category: "React Js",
+    liveUrl: "https://rashadhusien.github.io/HTML_And_CSS_Template-One/",
+    githubUrl: "https://github.com/Rashadhusien/HTML_And_CSS_Template-One",
+  },
+  {
+    id: uuid(),
+    title: "Link Design",
+    description:
+      "A modern website for plumbing and firefighting services built with Next.js and Tailwind CSS, offering a seamless and responsive user experience.",
+    image: "linkDesign_ocpwsw",
+    technologies: [
+      "Nextjs",
+      "tailwind",
+      "swiper",
+      "cloudinary",
+      "framer-motion",
+      "firebase",
+      "axios",
+      "API",
+    ],
+    category: "Next Js",
+    liveUrl: "https://link-design.vercel.app/",
+    githubUrl: "https://github.com/Rashadhusien/link-design",
+  },
+  {
+    id: uuid(),
+    title: "Storage Management App",
+    description:
+      "A storage management application built with Next.js and Tailwind CSS, featuring a user-friendly interface for managing storage data.",
+    image: "storage-managment_uloo29",
+    technologies: [
+      "Nextjs",
+      "tailwind",
+      "typeScript",
+      "shadcn/ui",
+      "appwrite",
+      "react-hook-form",
+      "zod",
+    ],
+    category: "Next Js",
+    liveUrl: "https://storage-managment-indol.vercel.app/sign-in",
+    githubUrl: "https://github.com/Rashadhusien/storage_managment",
+  },
+  {
+    id: uuid(),
+    title: "To-Do List Application",
+    description:
+      "A feature-rich to-do list app built with React and Tailwind CSS, offering task management with a clean and responsive design.",
+    image: "todo_ol7jrw",
+    technologies: ["Material UI", "Reactjs"],
+    category: "React Js",
+    liveUrl: "https://stalwart-maamoul-b4728e.netlify.app/",
+    githubUrl: "https://github.com/Rashadhusien/todo-react",
+  },
+  {
+    id: uuid(),
+    title: "Tic Tac Toe Game",
+    description:
+      "A classic Tic Tac Toe game built with HTML, CSS, and JavaScript, featuring a responsive design and interactive gameplay.",
+    image: "xo_game_melf8a",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    category: "JavaScript",
+    liveUrl: "https://rashadhusien.github.io/Tic-Tac-Toe-Game/",
+    githubUrl: "https://github.com/Rashadhusien/Tic-Tac-Toe-Game",
+  },
+  {
+    id: uuid(),
+    title: "Prayer Timings Application",
+    description:
+      "A React-based prayer timings app that fetches data from an API, providing accurate prayer schedules with a responsive design.",
+    image: "prayertimings_jmphlx",
+    technologies: ["React", "JavaScript", "Material UI", "API"],
+    category: "React Js",
+    liveUrl: "https://keen-paprenjak-733d78.netlify.app/",
+    githubUrl: "https://github.com/Rashadhusien/prayers-timings",
+  },
   {
     id: uuid(),
     title: "Responsive Portfolio Template",
@@ -245,17 +379,7 @@ export const fullProjects: Projects[] = [
     liveUrl: "https://rashadhusien.github.io/Image-Slider/",
     githubUrl: "https://github.com/Rashadhusien/Image-Slider",
   },
-  {
-    id: uuid(),
-    title: "Tic Tac Toe Game",
-    description:
-      "A classic Tic Tac Toe game built with HTML, CSS, and JavaScript, featuring a responsive design and interactive gameplay.",
-    image: "xo_game_melf8a",
-    technologies: ["HTML", "CSS", "JavaScript"],
-    category: "JavaScript",
-    liveUrl: "https://rashadhusien.github.io/Tic-Tac-Toe-Game/",
-    githubUrl: "https://github.com/Rashadhusien/Tic-Tac-Toe-Game",
-  },
+
   {
     id: uuid(),
     title: "Events Manager Application",
@@ -302,28 +426,7 @@ export const fullProjects: Projects[] = [
     githubUrl:
       "https://github.com/Rashadhusien/social-media-dashboard-with-theme-switcher-master",
   },
-  {
-    id: uuid(),
-    title: "Prayer Timings Application",
-    description:
-      "A React-based prayer timings app that fetches data from an API, providing accurate prayer schedules with a responsive design.",
-    image: "prayertimings_jmphlx",
-    technologies: ["React", "JavaScript", "Material UI", "API"],
-    category: "React Js",
-    liveUrl: "https://keen-paprenjak-733d78.netlify.app/",
-    githubUrl: "https://github.com/Rashadhusien/prayers-timings",
-  },
-  {
-    id: uuid(),
-    title: "To-Do List Application",
-    description:
-      "A feature-rich to-do list app built with React and Tailwind CSS, offering task management with a clean and responsive design.",
-    image: "todo_ol7jrw",
-    technologies: ["Material UI", "Reactjs"],
-    category: "React Js",
-    liveUrl: "https://stalwart-maamoul-b4728e.netlify.app/",
-    githubUrl: "https://github.com/Rashadhusien/todo-react",
-  },
+
   {
     id: uuid(),
     title: "Weather Forecast App",
@@ -345,44 +448,5 @@ export const fullProjects: Projects[] = [
     category: "React Js",
     liveUrl: "https://effortless-monstera-a182dd.netlify.app/",
     githubUrl: "",
-  },
-  {
-    id: uuid(),
-    title: "Link Design",
-    description:
-      "A modern website for plumbing and firefighting services built with Next.js and Tailwind CSS, offering a seamless and responsive user experience.",
-    image: "linkDesign_ocpwsw",
-    technologies: [
-      "Nextjs",
-      "tailwind",
-      "swiper",
-      "cloudinary",
-      "framer-motion",
-      "firebase",
-      "axios",
-      "API",
-    ],
-    category: "Next Js",
-    liveUrl: "https://link-design.vercel.app/",
-    githubUrl: "https://github.com/Rashadhusien/link-design",
-  },
-  {
-    id: uuid(),
-    title: "Storage Management App",
-    description:
-      "A storage management application built with Next.js and Tailwind CSS, featuring a user-friendly interface for managing storage data.",
-    image: "storage-managment_uloo29",
-    technologies: [
-      "Nextjs",
-      "tailwind",
-      "typeScript",
-      "shadcn/ui",
-      "appwrite",
-      "react-hook-form",
-      "zod",
-    ],
-    category: "Next Js",
-    liveUrl: "https://storage-managment-indol.vercel.app/sign-in",
-    githubUrl: "https://github.com/Rashadhusien/storage_managment",
   },
 ];

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowDown, Github, Linkedin, Mail, Download } from "lucide-react";
+import Link from "next/link";
 
 export default function Hero() {
   const handleResumeDownload = () => {
@@ -29,7 +30,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6">
               <span className="text-gray-900 dark:text-white">Hi, I'm </span>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400">
                 Rashad Hussein
@@ -91,24 +92,24 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="flex justify-center space-x-6 mb-16"
           >
-            <a
-              href="https://github.com"
+            <Link
+              href="https://github.com/Rashadhusien"
               className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
             >
               <Github size={24} />
-            </a>
-            <a
-              href="https://linkedin.com"
+            </Link>
+            <Link
+              href="https://www.linkedin.com/in/rashad-husein-2770622aa/"
               className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
             >
               <Linkedin size={24} />
-            </a>
-            <a
-              href="mailto:alex@example.com"
+            </Link>
+            <Link
+              href="mailto:rashadhusein440@gmail.com"
               className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
             >
               <Mail size={24} />
-            </a>
+            </Link>
           </motion.div>
 
           <motion.div
