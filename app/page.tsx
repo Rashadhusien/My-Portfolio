@@ -39,7 +39,7 @@ export default function Home() {
           <Hero />
           <About />
           <Projects />
-          <Testimonials />
+          {/* <Testimonials /> */}
           {/* <Blog /> */}
           <Contact />
         </main>
