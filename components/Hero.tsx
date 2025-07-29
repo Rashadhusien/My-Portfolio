@@ -6,10 +6,9 @@ import Link from "next/link";
 
 export default function Hero() {
   const handleResumeDownload = () => {
-    // Create a dummy PDF download
     const link = document.createElement("a");
-    link.href = "/placeholder.pdf"; // Replace with actual resume PDF path
-    link.download = "Alex_Johnson_Resume.pdf";
+    link.href = "/Rashad_Hussein_Resume.pdf";
+    link.download = "Rashad_Hussein_Resume.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
