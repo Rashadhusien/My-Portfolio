@@ -99,8 +99,52 @@ interface Projects {
   category: string;
   liveUrl: string;
   githubUrl: string;
+  inProgress?: boolean;
 }
 export const fullProjects: Projects[] = [
+  // {
+  //   id: uuid(),
+  //   title: "Dev Overflow",
+  //   description:
+  //     "Dev Overflow is a full-stack Q&A platform inspired by Stack Overflow, where developers can ask questions, share answers, and collaborate. Built with Next.js on the frontend and MongoDB on the backend, it features secure authentication, light and dark themes, and an intuitive admin panel for managing users and content, all designed to provide a seamless and engaging developer experience.",
+  //   image: "movie-app",
+  //   technologies: [
+  //     "next Js",
+  //     "API",
+  //     "tailwind CSS",
+  //     "mongoDB",
+  //     "next-auth",
+  //     "shadcn/ui",
+  //   ],
+  //   category: "Next Js",
+  //   liveUrl: "https://devflow.rashadhussein.com/",
+  //   githubUrl: "https://github.com/Rashadhusien/devflow",
+  //   inProgress: true,
+  // },
+  {
+    id: uuid(),
+    title: "University Library",
+    description:
+      "University Library is a full-stack web application that streamlines the process of borrowing and managing books within a university setting. Built with a modern tech stack, it allows students to browse and borrow books, while administrators can manage inventory, track borrowing history, and oversee user activity. With secure authentication, an intuitive interface, and efficient database management, the system ensures a smooth and organized library experience for both students and staff.",
+    image: "bookwise",
+    technologies: [
+      "Next Js",
+      "API",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "typescript",
+      "drizzle",
+      "bcryptjs",
+      "dayjs",
+      "imagekit",
+      "react-hook-form",
+      "zod",
+    ],
+    category: "Next Js",
+    liveUrl: "https://library.rashadhussein.com/",
+    githubUrl: "https://github.com/Rashadhusien/online-library",
+    inProgress: true,
+  },
   {
     id: uuid(),
     title: "movie App",
@@ -109,8 +153,9 @@ export const fullProjects: Projects[] = [
     image: "movie-app",
     technologies: ["React Js", "API", "Tailwind CSS", "appwrite"],
     category: "React Js",
-    liveUrl: "https://rashadhusien.github.io/HTML_And_CSS_Template-One/",
-    githubUrl: "https://github.com/Rashadhusien/HTML_And_CSS_Template-One",
+    liveUrl: "https://movieapp.rashadhussein.com/",
+    githubUrl: "https://github.com/Rashadhusien/Movie-Application",
+    inProgress: false,
   },
   {
     id: uuid(),

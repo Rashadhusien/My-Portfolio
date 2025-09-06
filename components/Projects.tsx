@@ -110,6 +110,7 @@ export default function Projects() {
                     <div className="flex space-x-4">
                       <a
                         href={project.liveUrl}
+                        target="_blank"
                         className="flex items-center space-x-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-300"
                       >
                         <ExternalLink size={18} />
@@ -117,6 +118,7 @@ export default function Projects() {
                       </a>
                       <a
                         href={project.githubUrl}
+                        target="_blank"
                         className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300"
                       >
                         <Github size={18} />

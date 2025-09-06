@@ -69,7 +69,7 @@ export default function About() {
           >
             <div className="prose prose-lg text-gray-700 dark:text-gray-300">
               <p className="text-lg leading-relaxed mb-6">
-                Hello! I'm Rashad, a passionate front-end developer with over 5
+                Hello! I'm Rashad, a passionate front-end developer with over 3
                 years of experience creating digital experiences that combine
                 beautiful design with functional code. I specialize in React,
                 Next.js, and modern web technologies.
