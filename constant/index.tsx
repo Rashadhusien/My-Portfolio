@@ -133,20 +133,7 @@ export const fullProjects: Projects[] = [
     description:
       "I built a full-featured Classroom Management System designed to facilitate digital education. This project mirrors the core functionalities of Google Classroom, enabling seamless communication and resource sharing between educators and students.",
     image: "classroom-system",
-    technologies: ["wordpress"],
-    category: "WordPress",
-    liveUrl: "https://linkdesign.site/",
-    githubUrl: "https://linkdesign.site/",
-    inProgress: true,
-  },
-  {
-    id: uuid(),
-    title: "plumming",
-    description:
-      "I developed LinkDesign, a professional platform dedicated to digital design services and e-commerce training. By leveraging the power of WordPress and WooCommerce, I built a seamless ecosystem that connects clients with high-end branding services and educational resources.",
-    image: "plumming",
     technologies: [
-      "Next Js",
       "React",
       "TypeScript",
       "Tailwind CSS",
@@ -159,6 +146,18 @@ export const fullProjects: Projects[] = [
     category: "React",
     liveUrl: "https://classroom-frontend-two-sigma.vercel.app",
     githubUrl: "https://github.com/Rashadhusien/classroom-frontend",
+    inProgress: true,
+  },
+  {
+    id: uuid(),
+    title: "plumming",
+    description:
+      "I developed LinkDesign, a professional platform dedicated to digital design services and e-commerce training. By leveraging the power of WordPress and WooCommerce, I built a seamless ecosystem that connects clients with high-end branding services and educational resources.",
+    image: "plumming",
+    technologies: ["wordpress"],
+    category: "wordpress",
+    liveUrl: "https://linkdesign.site/",
+    githubUrl: "https://linkdesign.site/",
     inProgress: true,
   },
   {
