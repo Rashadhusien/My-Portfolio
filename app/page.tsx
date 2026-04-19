@@ -9,6 +9,7 @@ import About from "@/components/About";
 import Testimonials from "@/components/Testimonials";
 import Blog from "@/components/Blog";
 import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   useEffect(() => {
@@ -39,10 +40,11 @@ export default function Home() {
           <Hero />
           <About />
           <Projects />
-          {/* <Testimonials /> */}
+          <Testimonials />
           {/* <Blog /> */}
           <Contact />
         </main>
+        <Footer />
       </div>
     </ThemeProvider>
   );

@@ -88,7 +88,7 @@ export default function Contact() {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setFormData({
       ...formData,
@@ -158,10 +158,10 @@ export default function Contact() {
                     Email
                   </h4>
                   <a
-                    href="mailto:rashadhusein440@gmail.com"
+                    href="mailto:rashadelrifai@gmail.com"
                     className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300"
                   >
-                    rashadhusein440@gmail.com
+                    rashadelrifai@gmail.com
                   </a>
                 </div>
               </motion.div>

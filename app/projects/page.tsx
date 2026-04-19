@@ -29,7 +29,7 @@ export default function Projects() {
       setFilteredProjects(fullProjects);
     } else {
       setFilteredProjects(
-        fullProjects.filter((project) => project.category === activeCategory)
+        fullProjects.filter((project) => project.category === activeCategory),
       );
     }
   }, [activeCategory]);
@@ -117,10 +117,13 @@ export default function Projects() {
                   </div>
 
                   <div className="p-6">
-                    <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                    <h3 className="text-2xl flex items-center justify-between font-bold mb-3 text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
                       {project.title}
+                      <span className="bg-black/30 border-2 border-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+                        {project.inProgress ? "In Progress" : "Completed"}
+                      </span>
                     </h3>
-                    <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
+                    <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed line-clamp-3">
                       {project.description}
                     </p>
 
@@ -136,20 +139,22 @@ export default function Projects() {
                     </div>
 
                     <div className="flex space-x-4">
-                      <a
+                      <Link
                         href={project.liveUrl}
+                        target="_blank"
                         className="flex items-center space-x-2 text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-300"
                       >
                         <ExternalLink size={18} />
                         <span>Live Demo</span>
-                      </a>
-                      <a
+                      </Link>
+                      <Link
                         href={project.githubUrl}
+                        target="_blank"
                         className="flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors duration-300"
                       >
                         <Github size={18} />
                         <span>Code</span>
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </motion.div>

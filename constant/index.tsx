@@ -17,11 +17,15 @@ import {
   SiNodedotjs,
   SiGit,
   SiFigma,
+  SiMongodb,
+  SiPostgresql,
+  SiWordpress,
+  SiGithub,
 } from "react-icons/si";
 
 export const skills = [
-  { name: "HTML5", level: 95, icon: <FaHtml5 className="w-full h-full" /> },
-  { name: "CSS3", level: 90, icon: <SiCss3 className="w-full h-full" /> },
+  { name: "HTML", level: 95, icon: <FaHtml5 className="w-full h-full" /> },
+  { name: "CSS", level: 90, icon: <SiCss3 className="w-full h-full" /> },
   {
     name: "JavaScript",
     level: 92,
@@ -38,7 +42,11 @@ export const skills = [
     level: 90,
     icon: <SiNextdotjs className="w-full h-full" />,
   },
-  { name: "Redux", level: 30, icon: <SiRedux className="w-full h-full" /> },
+  {
+    name: "wordpress",
+    level: 30,
+    icon: <SiWordpress className="w-full h-full" />,
+  },
   {
     name: "Tailwind CSS",
     level: 92,
@@ -59,7 +67,18 @@ export const skills = [
     icon: <SiNodedotjs className="w-full h-full" />,
   },
   { name: "Git", level: 65, icon: <SiGit className="w-full h-full" /> },
+  { name: "GitHub", level: 65, icon: <SiGithub className="w-full h-full" /> },
   { name: "Figma", level: 80, icon: <SiFigma className="w-full h-full" /> },
+  {
+    name: "mongodb",
+    level: 40,
+    icon: <SiMongodb className="w-full h-full" />,
+  },
+  {
+    name: "postgresql",
+    level: 30,
+    icon: <SiPostgresql className="w-full h-full" />,
+  },
 ];
 
 export const navItems = [
@@ -86,8 +105,7 @@ export const categories = [
   "JavaScript",
   "React Js",
   "Next Js",
-  "Tailwind CSS",
-  "TypeScript",
+  "wordpress",
 ];
 
 interface Projects {
@@ -102,25 +120,45 @@ interface Projects {
   inProgress?: boolean;
 }
 export const fullProjects: Projects[] = [
-  // {
-  //   id: uuid(),
-  //   title: "Dev Overflow",
-  //   description:
-  //     "Dev Overflow is a full-stack Q&A platform inspired by Stack Overflow, where developers can ask questions, share answers, and collaborate. Built with Next.js on the frontend and MongoDB on the backend, it features secure authentication, light and dark themes, and an intuitive admin panel for managing users and content, all designed to provide a seamless and engaging developer experience.",
-  //   image: "movie-app",
-  //   technologies: [
-  //     "next Js",
-  //     "API",
-  //     "tailwind CSS",
-  //     "mongoDB",
-  //     "next-auth",
-  //     "shadcn/ui",
-  //   ],
-  //   category: "Next Js",
-  //   liveUrl: "https://devflow.rashadhussein.com/",
-  //   githubUrl: "https://github.com/Rashadhusien/devflow",
-  //   inProgress: true,
-  // },
+  {
+    id: uuid(),
+    title: "plumming",
+    description:
+      "I developed LinkDesign, a professional platform dedicated to digital design services and e-commerce training. By leveraging the power of WordPress and WooCommerce, I built a seamless ecosystem that connects clients with high-end branding services and educational resources.",
+    image: "plumming",
+    technologies: ["wordpress"],
+    category: "wordpress",
+    liveUrl: "https://linkdesign.site/",
+    githubUrl: "https://linkdesign.site/",
+    inProgress: true,
+  },
+  {
+    id: uuid(),
+    title: "Cody - LMS Platform",
+    description:
+      "I developed a comprehensive, scalable Learning Management System (LMS) designed to streamline the online educational experience for both instructors and students.",
+    image: "cody",
+    technologies: [
+      "next Js",
+      "react",
+      "API",
+      "tailwind CSS",
+      "next-auth",
+      "shadcn/ui",
+      "cloudinary",
+      "postgreSql",
+      "prisma",
+      "drizzle-orm",
+      "neon",
+      "gsap",
+      "pino",
+      "zod",
+    ],
+    category: "Next Js",
+    liveUrl: "https://cody-nine-iota.vercel.app/",
+    githubUrl: "https://github.com/Rashadhusien/learning-management-system",
+    inProgress: true,
+  },
   {
     id: uuid(),
     title: "University Library",

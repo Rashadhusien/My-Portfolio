@@ -50,7 +50,7 @@ export default function About() {
           >
             <div className="relative z-10 ">
               <Image
-                src="/profile.jpg"
+                src="/linkedin-profile.png"
                 alt="Alex Johnson"
                 width={400}
                 height={400}
@@ -69,21 +69,22 @@ export default function About() {
           >
             <div className="prose prose-lg text-gray-700 dark:text-gray-300">
               <p className="text-lg leading-relaxed mb-6">
-                Hello! I'm Rashad, a passionate front-end developer with over 3
-                years of experience creating digital experiences that combine
-                beautiful design with functional code. I specialize in React,
-                Next.js, and modern web technologies.
+                I turn coffee into code and bugs into… slightly different bugs.
+                I’m a front-end developer who enjoys making pixels behave,
+                animations feel alive, and buttons actually do what they promise
+                (revolutionary, I know).
               </p>
               <p className="text-lg leading-relaxed mb-6">
-                My journey in web development started with a curiosity about how
-                websites work, and it has evolved into a career focused on
-                creating user-centered applications that solve real-world
-                problems.
+                When I’m not convincing CSS to cooperate or debugging something
+                that “worked five minutes ago,” I’m probably building projects I
+                didn’t need—but absolutely wanted—to sharpen my skills and feed
+                my curiosity. I like clean design, smooth UX, and code that
+                doesn’t make future-me question life choices.
               </p>
               <p className="text-lg leading-relaxed mb-8">
-                When I'm not coding, you can find me exploring new technologies,
-                contributing to open-source projects, or sharing knowledge with
-                the developer community.
+                Bonus skills include: overthinking variable names, celebrating
+                when something finally works, and saying “just one more feature”
+                about 17 times per project.
               </p>
             </div>
           </motion.div>

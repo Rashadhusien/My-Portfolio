@@ -7,8 +7,8 @@ import Link from "next/link";
 export default function Hero() {
   const handleResumeDownload = () => {
     const link = document.createElement("a");
-    link.href = "/Rashad_Hussein_Resume.pdf";
-    link.download = "Rashad_Hussein_Resume.pdf";
+    link.href = "/Rashad_Resume.pdf";
+    link.download = "Rashad_Resume.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -21,8 +21,6 @@ export default function Hero() {
     >
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-blue-900/20 dark:via-gray-900 dark:to-purple-900/20 transition-colors duration-300" />
-
-      
 
       <div className="container mx-auto px-6 relative z-10 mt-[100px]">
         <div className="text-center ">
